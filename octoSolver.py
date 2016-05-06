@@ -26,7 +26,7 @@ for parms in sinAnimParms:
 #Set the parameters for each bone channel
 for bone in range(int(numbones)):
 
-    nameBones = 'tentacleRIG1/'+labelbones+str(bone+1)+':r'
+    nameBones = labelbones+str(bone+1)+':r'
     
     sel.parm('name'+str(bone)).set(nameBones)
     sel.parm('type'+str(bone)).set(1)
@@ -36,6 +36,3 @@ for i in range(int(firstBone),int(lastBone)):
 
     exp = 'sin('+str(i+1)+'*ch("phaseSin")+ch("freqSin"))*ch("ampSin")'
     sel.parm('value'+ str(i) + str(axis)).setExpression(exp)
-    
-
-    
