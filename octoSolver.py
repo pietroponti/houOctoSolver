@@ -10,6 +10,11 @@ selList = hou.selectedNodes()
 #as I am using selectedNodes and its a Tuple I reduce to one item by choosing only one itme of the list
 sel = selList[0]
 
+try:
+    sel = hou.selectedNodes()[0]
+except IndexError:
+    print 'select something bitch'
+
 #Set the Number of Channels to be the same as the number of bones
 sel.parm('numchannels').set(numbones)
 
