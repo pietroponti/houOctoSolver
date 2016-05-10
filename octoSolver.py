@@ -6,9 +6,9 @@ firstBone = raw_input('enter first affected bone:')
 lastBone = raw_input('enter last affected bone:')
 
 #Get selected node (this has to be a channel CHOP - later I might create this)
-selList = hou.selectedNodes()
+#selList = hou.selectedNodes()
 #as I am using selectedNodes and its a Tuple I reduce to one item by choosing only one itme of the list
-sel = selList[0]
+#sel = selList[0]
 
 try:
     sel = hou.selectedNodes()[0]
