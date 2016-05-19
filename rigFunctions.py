@@ -170,7 +170,34 @@ def clearAll():
 #-DEFINE FUNCTIONS FOR KEYABLE CONTROLS-#
  #######################################
   #####################################
+  
+  
+#_MASTER CONTROL_#
 
+#Hide master control        
+def hideMasterCtrl():
+    sel=hou.pwd()
+    children=sel.children()
+    for i in children:
+        if 'masterCtrl' in i.name():
+            if i.isDisplayFlagSet() == True:
+                hidden = 0
+            else:
+                hidden = 1
+            i.setDisplayFlag(hidden)
+            
+#Display Stretch     
+def displayStretch():
+    sel=hou.pwd()
+    children=sel.allSubChildren()
+    for i in children:
+        if 'displayStretch' in i.name():
+            if i.isBypassed() == True:
+                bypassIt = 0
+            else:
+                bypassIt = 1
+            i.bypass(bypassIt)
+            
 #_MAIN CONTROLS_# 
       
 #Select all the main controls        
@@ -196,7 +223,7 @@ def hideCtrls():
             
 #Key all the main controls        
 def keyCtrls():
-    a=1
+    a=0
     sel=hou.pwd()
     children=sel.children()
     axis = ['_tx','_ty','_tz','_rx','_ry','_rz']
@@ -217,7 +244,7 @@ def keyCtrls():
         
 #Remove Key all the main controls        
 def rmKeyCtrls():
-    a=1
+    a=0
     sel=hou.pwd()
     children=sel.children()
     axis = ['_tx','_ty','_tz','_rx','_ry','_rz']
@@ -233,7 +260,7 @@ def rmKeyCtrls():
         
 #Set to 0 all the main controls        
 def resetCtrls():
-    a=1
+    a=0
     sel=hou.pwd()
     children=sel.children()
     axis = ['_tx','_ty','_tz','_rx','_ry','_rz']
@@ -270,12 +297,11 @@ def hideSCtrls():
 
 #Key all the shape controls        
 def keySCtrls():
-    a=1
+    a=0
     sel=hou.pwd()
     children=sel.children()
     axis = ['_tx','_ty','_tz','_rx','_ry','_rz']
     ctrls = [i.name() for i in children if 'ctrl' in i.name()]
-    ctrls.pop(0)
     currentFrame = hou.frame()
     setKey = hou.Keyframe()
     
@@ -292,12 +318,11 @@ def keySCtrls():
         
 #Remove Key all the shape controls        
 def rmKeySCtrls():
-    a=1
+    a=0
     sel=hou.pwd()
     children=sel.children()
     axis = ['_tx','_ty','_tz','_rx','_ry','_rz']
     ctrls = [i.name() for i in children if 'ctrl' in i.name()]
-    ctrls.pop(0)
     currentFrame = hou.frame()
     
     for ctrl in range(len(ctrls)):
@@ -309,7 +334,7 @@ def rmKeySCtrls():
         
 #Set to 0 all the shape controls        
 def resetSCtrls():
-    a=1
+    a=0
     sel=hou.pwd()
     children=sel.children()
     axis = ['_tx','_ty','_tz','_rx','_ry','_rz']
